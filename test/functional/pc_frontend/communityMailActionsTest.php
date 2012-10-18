@@ -25,4 +25,18 @@ $browser
     ->isParameter('action', 'form')
   ->end()
   ->with('response')->isStatusCode(200)
+
+  ->get('/communityMail/2')
+  ->with('request')->begin()
+    ->isParameter('module', 'communityMail')
+    ->isParameter('action', 'form')
+  ->end()
+  ->with('response')->isStatusCode(404)
+
+  ->get('/communityMail/3')
+  ->with('request')->begin()
+    ->isParameter('module', 'communityMail')
+    ->isParameter('action', 'form')
+  ->end()
+  ->with('response')->isStatusCode(404)
 ;

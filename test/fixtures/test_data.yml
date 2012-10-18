@@ -22,3 +22,24 @@ Community:
   community_1:
     id: 1
     name: "community1"
+  community_2:
+    id: 2
+    name: "community2"
+  community_3:
+    id: 3
+    name: "community3"
+
+CommunityMember:
+  member1_community1_admin:
+    id: ~
+    Community: community_1
+    Member: member_1
+    CommunityMemberPosition:
+      member1_community1_admin_position:
+        Community: community_1
+        Member: member_1
+        name: "admin"
+  member1_community2_member:
+    id: ~
+    Community: community_2
+    Member: member_1
