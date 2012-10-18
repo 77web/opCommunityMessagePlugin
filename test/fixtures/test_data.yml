@@ -17,3 +17,8 @@ MemberConfig:
     name: "password"
     value: "<?php echo md5('password') ?>"
     Member: member_1
+
+Community:
+  community_1:
+    id: 1
+    name: "community1"
