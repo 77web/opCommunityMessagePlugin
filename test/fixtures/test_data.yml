@@ -3,6 +3,15 @@ Member:
     id: ~
     name: "OpenPNE君"
     is_active: 1
+  member_2:
+    name: "member2"
+    is_active: true
+  member_3:
+    name: "member3"
+    is_active: true
+  member_4:
+    name: "member4"
+    is_active: true
 
 MemberConfig:
   member_address_1:
@@ -43,3 +52,11 @@ CommunityMember:
     id: ~
     Community: community_2
     Member: member_1
+  member2_community1_member:
+    id: ~
+    Community: community_1
+    Member: member_2
+  member3_community1_member:
+    id: ~
+    Community: community_1
+    Member: member_3
