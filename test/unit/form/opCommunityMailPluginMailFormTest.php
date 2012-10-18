@@ -7,7 +7,7 @@ $t = new lime_test(null, new lime_output_color());
 $form = new opCommunityMailPluginMailForm();
 
 $t->diag('->configure()');
-$t->ok(isset($form['title']), 'has "title" field');
+$t->ok(isset($form['subject']), 'has "subject" field');
 $t->ok(isset($form['body']), 'has "body" field');
 $t->ok(isset($form['_csrf_token']), 'check csrf');
 
@@ -19,7 +19,7 @@ $community = Doctrine::getTable('Community')->find(1);
 $member = Doctrine::getTable('Member')->find(1);
 $t->ok(!$form->send($community, $member), 'could not send because the form is not valid.');
 $values = array(
-  'title' => 'test title',
+  'subject' => 'test title',
   'body' => 'test body',
   '_csrf_token' => $form->getDefault('_csrf_token'),
 );

@@ -1,14 +1,11 @@
 <?php
 
-class opCommunityMailPluginMailForm extends BaseForm
+class opCommunityMailPluginMailForm extends SendMessageDataForm
 {
   public function configure()
   {
-    $this->setWidget('title', new sfWidgetFormInput());
-    $this->setValidator('title', new sfValidatorString());
-    
-    $this->setWidget('body', new sfWidgetFormTextarea());
-    $this->setValidator('body', new sfValidatorString());
+    parent::configure();
+    $this->useFields(array('subject', 'body'));
     
     $this->getWidgetSchema()->setNameFormat('community_mail[%s]');
     $this->getWidgetSchema()->getFormFormatter()->setTranslationCatalogue('form_communityMail');
@@ -27,7 +24,7 @@ class opCommunityMailPluginMailForm extends BaseForm
     }
     
     $message = new SendMessageData();
-    $message->setSubject($this->getValue('title'));
+    $message->setSubject($this->getValue('subject'));
     $message->setBody($this->getValue('body'));
     $message->setMember($fromMember);
     $message->setIsSend(true);
