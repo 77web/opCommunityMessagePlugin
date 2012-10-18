@@ -30,5 +30,28 @@ class opCommunityMailPluginCommunityMailActions extends sfActions
   
   public function executeSend(sfWebRequest $request)
   {
+    $request->checkCSRFProtection();
+    
+    $values = $this->getUser()->getAttribute('community_mail.'.$this->community->getId());
+    $this->forward404Unless($values);
+    
+    $values['_csrf_token'] = $this->form->getDefault('_csrf_token');
+    $this->form->bind($values);
+    
+    if ($this->form->isValid())
+    {
+      $communityId = $this->community->getId();
+      
+      $this->form->send($this->community, $this->getUser()->getMember());
+      $this->getUser()->setAttribute('community_mail.'.$communityId, null);
+      
+      $this->getUser()->setFlash('notice', 'Message sent.');
+      
+      $this->redirect('@community_home?id='.$communityId);
+    }
+    
+    $this->setTemplate('form');
+    
+    return sfView::INPUT;
   }
 }

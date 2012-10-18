@@ -64,6 +64,20 @@ $browser->test()->ok(isset($savedData['body']), 'body is saved');
 $browser->test()->is($savedData['body'], 'test body', 'the saved body is "test body"');
 
 $browser
+  ->click('No')
+  ->isForwardedTo('communityMail', 'form')
+  ->back()
+  
+  ->click('Yes')
+  ->with('request')->begin()
+    ->isParameter('module', 'communityMail')
+    ->isParameter('action', 'send')
+    ->isParameter('id', 1)
+  ->end()
+  ->with('response')->isStatusCode(302)
+  ->followRedirect()
+  ->isForwardedTo('community', 'home')
+
   ->get('/communityMail/2')
   ->with('request')->begin()
     ->isParameter('module', 'communityMail')
