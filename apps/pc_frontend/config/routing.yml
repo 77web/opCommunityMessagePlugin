@@ -1,15 +1,15 @@
-community_mail:
-  url: /communityMail/:id
-  param: { module: communityMail, action: form }
+community_message:
+  url: /communityMessage/:id
+  param: { module: communityMessage, action: form }
   class: sfDoctrineRoute
   options: { type: object, model: Community }
   requirements:
     id: \d+
     sf_method: [get, post]
 
-community_mail_send:
-  url: /communityMail/:id/send
-  param: { module: communityMail, action: send }
+community_message_send:
+  url: /communityMessage/:id/send
+  param: { module: communityMessage, action: send }
   class: sfDoctrineRoute
   options: { type: object, model: Community }
   requirements:

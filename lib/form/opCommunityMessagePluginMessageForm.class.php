@@ -1,19 +1,19 @@
 <?php
 
-class opCommunityMailPluginMailForm extends SendMessageDataForm
+class opCommunityMessagePluginMessageForm extends SendMessageDataForm
 {
   public function configure()
   {
     parent::configure();
     $this->useFields(array('subject', 'body'));
     
-    $this->getWidgetSchema()->setNameFormat('community_mail[%s]');
-    $this->getWidgetSchema()->getFormFormatter()->setTranslationCatalogue('form_communityMail');
+    $this->getWidgetSchema()->setNameFormat('community_message[%s]');
+    $this->getWidgetSchema()->getFormFormatter()->setTranslationCatalogue('form_communityMessage');
   }
   
   public function getName()
   {
-    return 'community_mail';
+    return 'community_message';
   }
   
   public function send(Community $community, Member $fromMember)

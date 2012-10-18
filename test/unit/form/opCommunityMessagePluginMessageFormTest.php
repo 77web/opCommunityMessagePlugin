@@ -4,7 +4,7 @@ include(dirname(__FILE__).'/../../bootstrap/unit.php');
 include(dirname(__FILE__).'/../../bootstrap/database.php');
 
 $t = new lime_test(null, new lime_output_color());
-$form = new opCommunityMailPluginMailForm();
+$form = new opCommunityMessagePluginMessageForm();
 
 $t->diag('->configure()');
 $t->ok(isset($form['subject']), 'has "subject" field');
@@ -12,7 +12,7 @@ $t->ok(isset($form['body']), 'has "body" field');
 $t->ok(isset($form['_csrf_token']), 'check csrf');
 
 $t->diag('->getName()');
-$t->is($form->getName(), 'community_mail', 'returns "community_mail"');
+$t->is($form->getName(), 'community_message', 'returns "community_mail"');
 
 $t->diag('->send()');
 $community = Doctrine::getTable('Community')->find(1);

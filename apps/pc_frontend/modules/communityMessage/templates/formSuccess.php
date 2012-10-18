@@ -13,8 +13,8 @@
 end_slot();
 
 $options = array();
-$options['yes_url'] = url_for('@community_mail_send?id='.$community->getId());
-$options['no_url'] = url_for('@community_mail?id='.$community->getId());
+$options['yes_url'] = url_for('@community_message_send?id='.$community->getId());
+$options['no_url'] = url_for('@community_message?id='.$community->getId());
 $options['body'] = get_slot('confirm');
 
-op_include_yesno('communityMailConfirmForm', $csrfForm, $csrfForm, $options);
+op_include_yesno('communityMessageConfirmForm', $csrfForm, $csrfForm, $options);
