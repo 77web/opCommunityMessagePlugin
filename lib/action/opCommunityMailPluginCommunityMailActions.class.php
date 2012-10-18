@@ -17,6 +17,8 @@ class opCommunityMailPluginCommunityMailActions extends sfActions
       $this->form->bind($request->getParameter($this->form->getName()));
       if ($this->form->isValid())
       {
+        $this->getUser()->setAttribute('community_mail.'.$this->community->getId(), $this->form->getValues());
+        
         $this->csrfForm = new BaseForm();
         
         return sfView::SUCCESS;

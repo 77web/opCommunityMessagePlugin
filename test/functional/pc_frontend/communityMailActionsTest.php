@@ -55,7 +55,15 @@ $browser
     ->checkElement('table.confirm tr:eq(1) td:contains("test body")')
     ->checkElement('input[name=_csrf_token]', 2)
   ->end()
+;
+$savedData = $browser->getUser()->getAttribute('community_mail.1');
+$browser->test()->isa_ok($savedData, 'array', 'saved data is array');
+$browser->test()->ok(isset($savedData['title']), 'title is saved');
+$browser->test()->is($savedData['title'], 'test title', 'the saved title is "test title"');
+$browser->test()->ok(isset($savedData['body']), 'body is saved');
+$browser->test()->is($savedData['body'], 'test body', 'the saved body is "test body"');
 
+$browser
   ->get('/communityMail/2')
   ->with('request')->begin()
     ->isParameter('module', 'communityMail')
