@@ -1,0 +1,16 @@
+# PEAR installer dependency (PEAR インストーラの依存性)
+pearinstaller:
+  min: 1.4.0
+
+# PHP dependency (PHP の依存性)
+php:
+  min: 5.2.3
+
+# Package dependency (パッケージの依存性)
+package:
+  openpne: # The dependency with OpenPNE. (OpenPNE との依存性)
+    channel: plugins.openpne.jp
+    min: 3.5.1
+  opMessagePlugin:
+    channel: plugins.openpne.jp
+    min: 1.0.0
