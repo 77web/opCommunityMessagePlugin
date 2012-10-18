@@ -1,8 +1,8 @@
 <?php slot('confirm'); ?>
 <table class="confirm">
   <tr>
-    <th><?php echo $form['title']->renderLabel(); ?></th>
-    <td><?php echo $form->getValue('title'); ?></td>
+    <th><?php echo $form['subject']->renderLabel(); ?></th>
+    <td><?php echo $form->getValue('subject'); ?></td>
   </tr>
   <tr>
     <th><?php echo $form['body']->renderLabel(); ?></th>
