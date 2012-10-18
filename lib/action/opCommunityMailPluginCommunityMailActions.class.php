@@ -12,6 +12,17 @@ class opCommunityMailPluginCommunityMailActions extends sfActions
   
   public function executeForm(sfWebRequest $request)
   {
+    if ($request->isMethod(sfRequest::POST) && $request->getParameter($this->form->getName()))
+    {
+      $this->form->bind($request->getParameter($this->form->getName()));
+      if ($this->form->isValid())
+      {
+        $this->csrfForm = new BaseForm();
+        
+        return sfView::SUCCESS;
+      }
+    }
+    
     return sfView::INPUT;
   }
   
