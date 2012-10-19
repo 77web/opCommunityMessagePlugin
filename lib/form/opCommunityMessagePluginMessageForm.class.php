@@ -30,17 +30,17 @@ class opCommunityMessagePluginMessageForm extends SendMessageDataForm
     $message->setIsSend(true);
     $message->save();
     
-    $members = Doctrine::getTable('CommunityMember')->getCommunityMembers($community->getId());
+    $communityMembers = Doctrine::getTable('CommunityMember')->getCommunityMembers($community->getId());
     $count = 0;
-    foreach ($members as $member)
+    foreach ($communityMembers as $communityMember)
     {
       $sendList = new MessageSendList();
       $sendList->setSendMessageData($message);
-      $sendList->setMember($member);
+      $sendList->setMemberId($communityMember->getId());
       $sendList->save();
       $count++;
       
-      $member->free(true);
+      $communityMember->free(true);
     }
     
     return $count;
